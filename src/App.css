@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.border-5{
+    border-width: 5px !important;
+}
+.btn-disabled{
+    background: rgb(55 65 81) !important;
+    cursor: not-allowed;
+}
