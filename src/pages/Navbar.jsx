@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 import React, { useState } from 'react'
 import { useLogoutMutation } from '../feature/api/authApi';
 import {ImSpinner2} from 'react-icons/im';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../feature/service/authSlice';
 
@@ -28,8 +28,12 @@ const Navbar = () => {
 
   return (
     <>
-        <div className="flex justify-between items-center container mx-auto shadow-lg p-5 mt-1">
-            <h1>React-CRUD</h1>
+        <div className="flex justify-between items-center container mx-auto shadow-lg shadow-violet-400 p-5 mt-1 rounded-lg">
+            <h1 className='text-2xl font-bold'>
+              <Link to="/">
+              React-CRUD
+              </Link>
+              </h1>
             <ul className='flex items-center space-x-8'>
             <li>{user.name}</li>
             <li>{user.email}</li>

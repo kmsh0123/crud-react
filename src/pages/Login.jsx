@@ -30,7 +30,7 @@ const Login = () => {
   return (
     <>
     <div className="flex justify-center items-center min-h-screen">
-        <form onSubmit={handleSubmit(loginHandler)} className="shadow shadow-violet-300 p-5 rounded-2xl relative m-1 sm:m-2 lg:m-0">
+        <form onSubmit={handleSubmit(loginHandler)} className="shadow shadow-violet-300 p-5 rounded-2xl relative m-1 sm:m-2 lg:m-0 w-96">
         <BiUserCircle className='text-6xl mx-auto'/>
             <div className="">
             <AiOutlineUser className='w-5 h-5 absolute top-[133px] right-[30px]'/>

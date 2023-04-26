@@ -25,8 +25,8 @@ const Register = () => {
   
   return (
     <>
-    <div className="flex justify-center items-center min-h-screen">
-        <form onSubmit={handleSubmit(registerHandler)} className="shadow shadow-violet-300 p-5 rounded-2xl m-2 md:m-2 lg:m-0">
+    <div className="flex justify-center items-center min-h-screen ">
+        <form onSubmit={handleSubmit(registerHandler)} className="w-96 shadow shadow-violet-300 p-5 rounded-2xl m-2 md:m-2 lg:m-0">
             <h1 className='text-3xl text-violet-600 font-semibold text-center mb-5'>Create Your Account</h1>
             <div className="space-y-5">
               
