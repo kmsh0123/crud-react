@@ -30,7 +30,6 @@ const Details = () => {
                 </Link>
                 <Link to={`/edit/${id}`}>
             <button className="bg-violet-700 p-2 px-10 rounded-xl text-white font-bold hover:bg-violet-900 transition duration-300 my-5">Edit</button>
-                
                 </Link>
                 </div>
             </div>

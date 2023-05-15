@@ -10,6 +10,7 @@ import { ClipLoader } from 'react-spinners'
 import UploadProduct from './pages/UploadProduct'
 import Edit from './pages/Edit'
 import Details from './pages/Details'
+import Pagination from './pages/Pagination'
 
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
           <Route path="/uploadproduct" element={<UploadProduct/>}/>
           <Route path='/edit/:id' element={<Edit/>}/>
           <Route path='/detail/:id' element={<Details/>}/>
+          <Route path='/pages/:id' element={<Pagination/>}/>
          </Routes>
         }
     </div>

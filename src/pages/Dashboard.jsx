@@ -3,13 +3,15 @@ import Navbar from './Navbar'
 import BlogCard from './BlogCard';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import ReactPaginate from 'react-paginate';
-import {BsChevronLeft,BsChevronRight} from "react-icons/bs"
+import Pagination from './Pagination';
+import { Link, useParams } from 'react-router-dom';
 
 const Dashboard = () => {
   const [products,setProducts] = useState([]);
   const [currentPage,setCurrentPage] = useState(1);
   const [pagesPerPage] = useState(8);
+  const {id} = useParams();
+
   // const [postsPerPage,setPostsPerPage] = useState(8);
   
   const deletCard = async (id) => {
@@ -54,24 +56,10 @@ const Dashboard = () => {
           currentPosts?.map(blog=><BlogCard key={blog.id} blog={blog} deletCard={deletCard}/>)
         }
       </div>
-   
-        <ReactPaginate className='flex fixed w-96 bottom-[-16px] left-0 right-0 p-5 bg-violet-900 text-white mx-auto container items-center justify-center mt-8 mb-4 my-10 cursor-pointer select-none'
-        previousLabel = {
-          <span className="w-10 h-10 flex items-center justify-center bg-violet-400  rounded-md mr-4">
-              <BsChevronLeft />
-          </span>}
-          onPageChange={changePage}
-          pageCount={pageCount}
-          activeClassName="bg-violet-400 text-white"
-          containerClassName=""
-          pageClassName="block border-solid border-violet-200 hover:bg-violet-400 w-10 h-10 flex items-center justify-center rounded-md mr-4"    
-          nextLabel= {
-            <span className="w-10 h-10 flex items-center justify-center bg-violet-400  rounded-md">
-                <BsChevronRight />
-            </span>}
-        />
+      
+        <Pagination changePage={changePage} pageCount={pageCount}/>
     </>
   )
 }
 
-export default Dashboard 
+export default Dashboard

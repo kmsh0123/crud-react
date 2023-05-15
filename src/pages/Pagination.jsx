@@ -1,45 +1,25 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import {BsChevronLeft,BsChevronRight} from "react-icons/bs"
+import ReactPaginate from 'react-paginate'
 
-const Pagination = () => {
+
+const Pagination = ({changePage,pageCount}) => {
   return (
-    <div className="flex justify-center py-10">
-    <NavLink href="#" className="px-4 py-2 mx-1 text-gray-500 capitalize bg-white rounded-md cursor-not-allowed dark:bg-gray-800 dark:text-gray-600">
-        <div className="flex items-center -mx-1">
-            <span className="mx-1">
-                previous
-            </span>
-        </div>
-    </NavLink>
-
-    <NavLink href="#" className="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
-        1
-    </NavLink>
-
-    <NavLink href="#" className="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
-        2
-    </NavLink>
-
-    <NavLink href="#" className="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
-        3
-    </NavLink>
-
-    <NavLink href="#" className="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
-        4
-    </NavLink>
-
-    <NavLink href="#" className="hidden px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md sm:inline dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
-        5
-    </NavLink>
-
-    <NavLink href="#" className="px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-white rounded-md dark:bg-gray-800 dark:text-gray-200 hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-gray-200">
-        <div className="flex items-center -mx-1">
-            <span className="mx-1">
-                Next
-            </span>
-        </div>
-    </NavLink>
-</div>
+    <ReactPaginate className='flex fixed w-96 bottom-[-16px] left-0 right-0 p-5 bg-violet-900 text-white mx-auto container items-center justify-center mt-8 mb-4 my-10 cursor-pointer select-none'
+    previousLabel = {
+      <span className="w-10 h-10 flex items-center justify-center bg-violet-400  rounded-md mr-4">
+          <BsChevronLeft />
+      </span>}
+      onPageChange={changePage}
+      pageCount={pageCount}
+      activeClassName="bg-violet-400 text-white"
+      pageClassName="block border-solid border-violet-200 hover:bg-violet-400 w-10 h-10 flex items-center justify-center rounded-md mr-4"    
+      nextLabel= {
+        <span className="w-10 h-10 flex items-center justify-center bg-violet-400  rounded-md">
+            <BsChevronRight />
+        </span>
+        }
+    />
   )
 }
 
