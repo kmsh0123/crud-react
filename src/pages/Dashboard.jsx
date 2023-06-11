@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
+import React, { useEffect, useState } from 'react';
+import Navbar from './Navbar';
 import BlogCard from './BlogCard';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import Pagination from './Pagination';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 
 const Dashboard = () => {
-  const [products,setProducts] = useState([]);
-  const [currentPage,setCurrentPage] = useState(1);
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pagesPerPage] = useState(8);
-  const {id} = useParams();
+  const { id } = useParams();
+  const [searchParams] = useSearchParams();
 
-  // const [postsPerPage,setPostsPerPage] = useState(8);
-  
   const deletCard = async (id) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -37,17 +36,27 @@ const Dashboard = () => {
   const pageCount = Math.ceil(products.length/pagesPerPage)
 
   const changePage = ({selected}) => {
-    setCurrentPage(selected + 1)
+    setCurrentPage(selected + 1);
+    searchParams.set('page', selected + 1);
+    // Convert the URLSearchParams object to a string and update the URL
+    window.history.pushState({}, '', `?${searchParams.toString()}`);
   }
-
 
   const fetchApi = async () => {
-    const {data} = await axios.get("http://localhost:3000/products");
+    const { data } = await axios.get("http://localhost:3000/products");
     setProducts(data);
   }
-  useEffect(()=>{
+
+  useEffect(() => {
+    // Retrieve the 'page' query parameter from the URL and set the current page state
+    const page = parseInt(searchParams.get('page')) || 1;
+    setCurrentPage(page);
+  }, [searchParams]);
+
+  useEffect(() => {
     fetchApi();
-  },[currentPosts])
+  }, [currentPage]);
+
   return (
     <>
       <Navbar/>
@@ -57,9 +66,9 @@ const Dashboard = () => {
         }
       </div>
       
-        <Pagination changePage={changePage} pageCount={pageCount}/>
+      <Pagination changePage={changePage} pageCount={pageCount}/>
     </>
   )
 }
 
-export default Dashboard
+export default Dashboard;
